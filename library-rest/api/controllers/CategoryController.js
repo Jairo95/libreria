@@ -11,7 +11,7 @@ module.exports = {
 		console.log(req.query);
 		Category.getCategories(req.query, function(error, categories){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}
@@ -23,9 +23,9 @@ module.exports = {
 
 	createCategory: function(req, res){
 		console.log(req.query);
-		Category.addCategories(req.query, function(error, category){
+		Category.addCategory(req.query, function(error, category){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}

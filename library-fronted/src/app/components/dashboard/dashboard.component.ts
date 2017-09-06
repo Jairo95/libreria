@@ -115,4 +115,17 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  downloadBookId(book: any){
+    this.bookService.downloadBook(book.id).
+    subscribe(
+      (res) => {
+        console.log("Respuesta componente: ", res);
+        var fileURL = URL.createObjectURL(res);
+        window.open(fileURL);
+      },
+      (error) => {
+        console.log("Error pdf", error);
+      });
+  }
+
 }

@@ -10,7 +10,7 @@ module.exports = {
 	getAuthors: function(req, res){
 		Author.getAuthors(req, function(error, authors){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}
@@ -22,7 +22,7 @@ module.exports = {
 	createAuthor: function(req, res){
 		Author.addAuthor(req.query, function(error, author){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}

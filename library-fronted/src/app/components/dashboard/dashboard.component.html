@@ -1,27 +1,39 @@
 <h3> Lista de libros</h3>
+<div style="padding-top: 10px; padding-bottom:50px" >
 
-<div class="row">
-  <div *ngFor="let book of books">
-    <strong>Id: </strong>{{book.id}}<br>
-    <strong>Nombre: </strong>{{book.name}}
+
+  <div class="row" >
+    <div *ngFor="let book of books" style="padding-right: 10px; padding-left:10px">
+      <strong>Id: </strong>{{book.id}}<br>
+      <strong>Nombre: </strong>{{book.name}}
+      <button class="btn btn-primary"
+              (click)="downloadBookId(book)">
+        Descargar
+      </button>
+    </div>
+  </div>
+</div>
+<h3> Descargar un libro</h3>
+<div style="padding-top: 10px; padding-bottom:50px" >
+  <div class="row">
+
+    <label>Ingrese el id: </label><input type="text"  [(ngModel)]=idBook>
+    <button class="btn btn-primary"
+            (click)="downloadBook()">
+      Descargar
+    </button>
   </div>
 </div>
 
-<h3> Descargar un libro</h3>
-<div class="row">
 
-  <label>Ingrese el id: </label><input type="text"  [(ngModel)]=idBook>
-  <button class="btn btn-primary"
-          (click)="downloadBook()">
-    Descargar
-  </button>
-</div>
 <h3> Ingresar nuevo libro</h3>
 <form role="form" action="http://localhost:1337/createbook?name=Otromas2&status=1&version=1&idcategory=1&ideditorial=1&idauthor=1&iduser=1" enctype="multipart/form-data" method="post">
   <div class="form-group">
     <label for="name">Nombre: </label>
      <input type="text"  [(ngModel)]=nameBook required="true" id="name">
   </div>
+
+  <!--
   <div class="form-group">
     <label for="desc">Descripcion: </label>
     <input type="text"  [(ngModel)]=descriptionBook id="desc">
@@ -37,6 +49,7 @@
   <div class="form-group">
     <label>ISBN: </label> <input type="text"  [(ngModel)]=isbnBook>
   </div>
+-->
   <div class="form-group">
     <label>Codigo categoria: </label> <input type="text"  [(ngModel)]=codeCategory required="true">
   </div>
@@ -47,27 +60,27 @@
     <label>Codigo autor: </label> <input type="text"  [(ngModel)]=codeAuthor required="true">
   </div>
   <div class="form-group">
-    <label for="1">Categorias</label>
-      <div class="row"id="1">
-        <div *ngFor="let category of categories">
+    <strong >Categorias</strong>
+      <div class="row">
+        <div *ngFor="let category of categories" style="padding-right: 10px; padding-left:10px">
           <strong>Id: </strong>{{category.id}}<br>
           <strong>Nombre: </strong>{{category.name}}
         </div>
       </div>
     </div>
     <div class="form-group">
-    <label for="">Editoriales</label>
+    <strong >Editoriales</strong>
       <div class="row">
-        <div *ngFor="let editorial of editoriales">
+        <div *ngFor="let editorial of editoriales" style="padding-right: 10px; padding-left:10px">
           <strong>Id: </strong>{{editorial.id}}<br>
           <strong>Nombre: </strong>{{editorial.name}}
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label for="">Autores</label>
+      <strong >Autores</strong>
         <div class="row">
-          <div *ngFor="let author of authors">
+          <div *ngFor="let author of authors" style="padding-right: 10px; padding-left:10px">
             <strong>Id: </strong>{{author.id}}<br>
             <strong>Nombre: </strong>{{author.name}}
           </div>
@@ -76,3 +89,10 @@
   <input type="file" name="file" multiple="multiple" value="Buscar"><br>
   <input type="submit" value="Cargar">
   </form>
+
+
+  <form action="http://localhost:1337/createbook?name=Otromas2&status=1&version=1&idcategory=1&ideditorial=1&idauthor=1&iduser=1" enctype="multipart/form-data" method="post">
+<input type="text" name="title"><br>
+<input type="file" name="file" multiple="multiple"><br>
+<input type="submit" value="Upload">
+</form>

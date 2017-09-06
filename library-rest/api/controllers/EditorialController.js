@@ -10,7 +10,7 @@ module.exports = {
 		console.log(req.query);
 		Editorial.getEditorials(req.query, function(error, editorials){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}
@@ -24,7 +24,7 @@ module.exports = {
 		console.log(req.query);
 		Editorial.addEditorial(req.query, function(error, editorial){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}

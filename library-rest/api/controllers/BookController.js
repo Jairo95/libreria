@@ -9,7 +9,7 @@ module.exports = {
 	getBooks: function(req, res){
 		Book.getBooks(req, function(error, books){
 			if(error){
-				res.send({
+				return res.send({
 					error: error
 				});
 			}
@@ -28,7 +28,7 @@ module.exports = {
 			uploadedFiles.map(function(file) {
 					console.log(file);
 					var infoBook ={
-						name: options.name,
+						name: file.filename,
 						description: options.description,
 						status: options.status,
 						version: options.version,
@@ -43,7 +43,7 @@ module.exports = {
 
 					Book.addBook(infoBook, function(error, book){
 		 			if(error){
-		 				res.send({
+		 				return res.send({
 		 					error: error
 		 				});
 		 			}
