@@ -19,6 +19,7 @@ module.exports = {
 		});
 	},
 	createBook: function(req, res){
+		console.log(req);
 		req.file('file').upload({
 			dirname: '/home/docs'
 		},function (err, uploadedFiles) {
