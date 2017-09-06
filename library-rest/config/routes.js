@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,19 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  'get /downloadbook' : 'PdfResponseController.downloadBook',
+  'get /avatar' : 'PdfResponseController.avatar',
+  'post /fileupload': 'PdfResponseController.uploadFile',
+  'get /authors' : 'AuthorController.getAuthors',
+  'get /createauthor' : 'AuthorController.createAuthor',
+  'get /createcategory' : 'CategoryController.createCategory',
+  'get /categories' : 'CategoryController.getCategories',
+  'get /createeditorial' : 'EditorialController.createEditorial',
+  'get /editorials' : 'EditorialController.getEditorials',
+  'post /createbook' : 'BookController.createBook',
+  'get /books' : 'BookController.getBooks',
+  'get /createuser' : 'UserController.createUser',
+  'get /users' : 'UserController.getUsers',
+  'get /userbyusernameandpassword': 'UserController.validateuser',
 
-};
+}

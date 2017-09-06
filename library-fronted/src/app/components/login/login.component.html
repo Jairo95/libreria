@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errors">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>¡Error!</strong>  {{ errors }}
+  </div>
+</div>
+
+<div  ng-app>
+  <div class="row">
+    <form action="/login" method="get" (ngSubmit)="login(email.value, password.value)" name="forma">
+      <div class="form-group">
+        <div class="row"><fieldset>
+            <legend>Log In:</legend>
+            <label for="name">Email: </label>
+            <input type="email"
+                   class="form-control"
+                   #email
+                   name="email" ng-model="inp" required
+                                value=""
+                                placeholder="Email">
+            <div ng-show="forma.email.$error.required" class=" alert-danger">(*) Campo requerido</div>
+            <div ng-show="forma.email.$error.email" class=" alert-danger">Formato Email: ejemplo@gmail.com</div>
+
+            <br />
+            <label for="password">Password:</label>
+            <input type="password"
+                   class="form-control"
+                   #password
+
+                   name="password" ng-model="inp1" required
+                                   value=""
+                                   placeholder="Password">
+            <div ng-show="forma.password.$error.required" class=" alert-danger">(*) Campo requerido</div>
+            <br />
+          </fieldset></div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button class="form-control btn btn-primary" type="submit">Log In</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <button class="form-control btn btn-secondary" type="button" [routerLink]="['/signup']">
+              Sign up
+            </button>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
